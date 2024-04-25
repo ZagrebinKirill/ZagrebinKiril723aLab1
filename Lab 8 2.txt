@@ -1,0 +1,59 @@
+#include <iostream>
+#include <limits> // for using the constant numeric_limits
+using namespace std;
+
+int main() {
+    int n;
+    
+    // Input the size of the array
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    
+    // Initialize the array and input its elements
+    double arr[n];
+    cout << "Enter the elements of the array:" << endl;
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+    
+    // Find the minimum positive element and its index
+    double min_positive = numeric_limits<double>::infinity(); // initial value for minimum positive
+    int min_positive_index = -1; // initial value for index
+    for (int i = 0; i < n; ++i) {
+        if (arr[i] > 0 && arr[i] < min_positive) {
+            min_positive = arr[i];
+            min_positive_index = i;
+        }
+    }
+    
+    // Output the results for part (a)
+    if (min_positive_index != -1) {
+        cout << "Minimum positive element: " << min_positive << endl;
+        cout << "Index: " << min_positive_index + 1 << endl;
+    } else {
+        cout << "There are no positive elements in the array." << endl;
+    }
+    
+    // Find the last positive element and compute the sum of elements before it
+    double sum_before_last_positive = 0.0;
+    int last_positive_index = -1;
+    for (int i = 0; i < n; ++i) {
+        if (arr[i] > 0) {
+            sum_before_last_positive = 0.0; // reset sum before each positive number found
+            last_positive_index = i;
+        } else {
+            if (last_positive_index != -1) {
+                sum_before_last_positive += arr[i];
+            }
+        }
+    }
+    
+    // Output the result for part (b)
+    if (last_positive_index != -1) {
+        cout << "Sum of elements before the last positive element: " << sum_before_last_positive << endl;
+    } else {
+        cout << "There are no positive elements in the array." << endl;
+    }
+    
+    return 0;
+}
