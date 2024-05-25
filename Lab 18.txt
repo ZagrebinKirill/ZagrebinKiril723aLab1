@@ -1,0 +1,32 @@
+int main() {
+    // Create two 3x3 matrices
+    int matrix1Data[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int matrix2Data[3][3] = {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}};
+
+    Matrix matrix1(matrix1Data);
+    Matrix matrix2(matrix2Data);
+
+    // Print initial matrices
+    std::cout << "Matrix 1:" << std::endl;
+    matrix1.print();
+    std::cout << std::endl;
+
+    std::cout << "Matrix 2:" << std::endl;
+    matrix2.print();
+    std::cout << std::endl;
+
+    // Addition operation
+    Matrix sumMatrix = matrix1 + matrix2;
+    std::cout << "Sum of Matrix 1 and Matrix 2:" << std::endl;
+    sumMatrix.print();
+    std::cout << std::endl;
+
+    // Equality check
+    if (matrix1 == matrix2) {
+        std::cout << "Matrix 1 and Matrix 2 are equal." << std::endl;
+    } else {
+        std::cout << "Matrix 1 and Matrix 2 are not equal." << std::endl;
+    }
+
+    return 0;
+}
