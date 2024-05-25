@@ -1,0 +1,115 @@
+#include <iostream> 
+#include <vector> 
+#include <string> 
+ 
+using namespace std; 
+ 
+class Patient { 
+private: 
+    string surname; 
+    string name; 
+    string patronymic; 
+    string address; 
+    int medicalCardNumber; 
+    string diagnosis; 
+ 
+public: 
+    // Constructor 
+    Patient(string surname, string name, string patronymic, string address, int medicalCardNumber, string diagnosis) { 
+        this->surname = surname; 
+        this->name = name; 
+        this->patronymic = patronymic; 
+        this->address = address; 
+        this->medicalCardNumber = medicalCardNumber; 
+        this->diagnosis = diagnosis; 
+    } 
+ 
+    // Setters 
+    void setSurname(string surname) { 
+        this->surname = surname; 
+    } 
+ 
+    void setName(string name) { 
+        this->name = name; 
+    } 
+ 
+    void setPatronymic(string patronymic) { 
+        this->patronymic = patronymic; 
+    } 
+ 
+    void setAddress(string address) { 
+        this->address = address; 
+    } 
+ 
+    void setMedicalCardNumber(int medicalCardNumber) { 
+        this->medicalCardNumber = medicalCardNumber; 
+    } 
+ 
+    void setDiagnosis(string diagnosis) { 
+        this->diagnosis = diagnosis; 
+    } 
+ 
+    // Getters 
+    string getSurname() const { 
+        return surname; 
+    } 
+ 
+    string getName() const { 
+        return name; 
+    } 
+ 
+    string getPatronymic() const { 
+        return patronymic; 
+    } 
+ 
+    string getAddress() const { 
+        return address; 
+    } 
+ 
+    int getMedicalCardNumber() const { 
+        return medicalCardNumber; 
+    } 
+ 
+    string getDiagnosis() const { 
+        return diagnosis; 
+    } 
+ 
+    // Method to display patient information 
+    void show() { 
+        cout << "Surname: " << surname << endl; 
+        cout << "Name: " << name << endl; 
+        cout << "Patronymic: " << patronymic << endl; 
+        cout << "Address: " << address << endl; 
+        cout << "Medical Card Number: " << medicalCardNumber << endl; 
+        cout << "Diagnosis: " << diagnosis << endl; 
+    } 
+}; 
+ 
+int main() { 
+    // Creating a vector of Patient objects 
+    vector<Patient> patients; 
+ 
+    // Adding patients to the vector 
+    patients.push_back(Patient("Ivanov", "Ivan", "Ivanovich", "Kyiv, Shevchenko St., 15", 123456, "ARVI")); 
+    patients.push_back(Patient("Petrenko", "Petro", "Petrovich", "Lviv, Franko St., 20", 654321, "Fractured arm")); 
+    patients.push_back(Patient("Sydorenko", "Sydir", "Sydorovych", "Odessa, Deribasivska St., 25", 789012, "Stomach ulcer")); 
+ 
+    // Outputting a list of patients with a specified diagnosis (e.g., "ARVI") 
+    cout << "\nList of patients diagnosed with ARVI:\n"; 
+    for (Patient patient : patients) { 
+        if (patient.getDiagnosis() == "ARVI") { 
+            patient.show(); 
+        } 
+    } 
+ 
+    // Outputting a list of patients with medical card numbers in a specified range (e.g., from 100000 to 200000) 
+    cout << "\nList of patients with medical card numbers in the range 100000-200000:\n"; 
+    for (Patient patient : patients) { 
+        int medicalCardNumber = patient.getMedicalCardNumber(); 
+        if (medicalCardNumber >= 100000 && medicalCardNumber <= 200000) { 
+            patient.show(); 
+        } 
+    } 
+ 
+    return 0; 
+}
