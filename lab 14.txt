@@ -1,0 +1,74 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Function to check if a number is perfect
+bool isPerfectNumber(int num) {
+  if (num <= 1) {
+    return false;
+  }
+
+  int sumDivisors = 1;
+  for (int i = 2; i * i <= num; ++i) {
+    if (num % i == 0) {
+      sumDivisors += i;
+      if (i * i == num) {
+        sumDivisors -= i; // Remove if the number is a square
+      }
+    }
+  }
+
+  return num == sumDivisors;
+}
+
+int main() {
+  int n;
+  cout << "Enter the upper limit (N): ";
+  cin >> n;
+
+  // Creating an array of perfect numbers
+  vector<int> perfectNumbers;
+  for (int i = 1; i < n; ++i) {
+    if (isPerfectNumber(i)) {
+      perfectNumbers.push_back(i);
+    }
+  }
+
+  // Outputting the array of perfect numbers
+  cout << "Perfect numbers up to " << n << ": ";
+  for (int num : perfectNumbers) {
+    cout << num << " ";
+  }
+
+  cout << endl;
+
+  // **2. Binary Search:**
+
+  int target;
+  cout << "Enter the number to search for: ";
+  cin >> target;
+
+  int left = 0;
+  int right = perfectNumbers.size() - 1;
+
+  while (left <= right) {
+    int mid = left + (right - left) / 2;
+    int currentNum = perfectNumbers[mid];
+
+    if (currentNum == target) {
+      cout << target << " found at index " << mid << endl;
+      break;
+    } else if (currentNum < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  if (left > right) {
+    cout << target << " not found" << endl;
+  }
+
+  return 0;
+}
