@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+// Recursive function to calculate the nth term of the series
+double calculateSeriesTerm(int n) {
+  if (n == 0) {
+    return 0.7;
+  } else {
+    return 0.1 * calculateSeriesTerm(n - 1);
+  }
+}
+
+int main() {
+  int n;
+  cout << "Enter the number of the series term (n): ";
+  cin >> n;
+
+  double result = calculateSeriesTerm(n);
+  cout << "The " << n << "-th term of the series: " << result << endl;
+
+  return 0;
+}
